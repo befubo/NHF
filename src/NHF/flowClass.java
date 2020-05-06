@@ -144,6 +144,7 @@ public class flowClass {
 			hero = new character(userName,0,20,playerAP,userTypeInt,playerS,playerK,playerI,playerC);
 			
 		}
+		userInput.close();
 	}
 	
 	void saveGame() throws InterruptedException {
