@@ -79,6 +79,7 @@ public class flowClass {
 		    int playerI = 0;
 		    int playerC = 0;
 		    int playerAP = 0;
+		    String playerType = "";
 		    
 			switch(userTypeInt) {
 			  case 1:
@@ -86,18 +87,21 @@ public class flowClass {
 				playerK = 7;
 				playerI = 5;
 				playerC = 6;
+				playerType = "Ritter";
 			    break;
 			  case 2:
 				playerS = 5;
 				playerK = 8;
 				playerI = 6;
 				playerC = 7;
+				playerType = "Dieb";
 			    break;
 			  case 3:
 				playerS = 5;
 				playerK = 6;
 				playerI = 8;
 				playerC = 7;
+				playerType = "Magier";
 				break;
 			}
 			playerAP = playerS*playerK;
@@ -141,14 +145,16 @@ public class flowClass {
 				else {System.out.println("+ Nicht genügend Punkte übrig +");};
 			}
 			
-			hero = new character(userName,0,20,playerAP,userTypeInt,playerS,playerK,playerI,playerC);
+			hero = new character(userName,0,20,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
 			
 		}
 		userInput.close();
 	}
 	
 	void saveGame() throws InterruptedException {
-		System.out.println("Game saved");
+		System.out.println("~ Spiel gespeichert ~");
+		System.out.println("--------------------------------------------------");
+		// Spielstand in DB speichern
 	}
 		
 	
