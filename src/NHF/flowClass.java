@@ -118,7 +118,7 @@ public class flowClass {
 			System.out.println("[I] Intelligenz: "+playerI);
 			System.out.println("[C] Charisma: "+playerC);
 			Thread.sleep(2000);
-			hero = new character(userName,0,30,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
+			hero = new character(userName,0,1,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
 			
 	}
 	
@@ -138,11 +138,11 @@ public class flowClass {
 		Thread.sleep(3500);
 		System.out.println("- Doch du weisst, die Strassen sind gefährlich und überall lauern Gefahren auf dem Weg... -");
 		Thread.sleep(3500);
-		System.out.println("- Du bist "+flowClass.hero.name+", ein unerschrockener "+flowClass.hero.ptype+". -");
+		System.out.println("- Du bist "+hero.name+", ein unerschrockener "+hero.ptype+". -");
 		Thread.sleep(2000);
 		System.out.println("- Dies ist deine Geschichte... -");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
-		Thread.sleep(6000);
+		Thread.sleep(4000);
 		System.out.println("- Nachdem du das nötigste an Ausrüstung und Verpflegung eingepackt hast, machst du dich auf den Weg. -");
 		Thread.sleep(1000);
 		System.out.println("- Dein Weg führt dich auf die Strasse in Richtung Norden. -");
@@ -166,14 +166,8 @@ public class flowClass {
 		Thread.sleep(3500);
 	}
 	
-	void saveGame(int phase) throws InterruptedException {
-		System.out.println("");
-		System.out.println("[[[Spiel gespeichert]]]");
-		System.out.println("");
-		// Spielstand in DB speichern
-	}
 		
 	void debugHero() throws InterruptedException {
-		hero = new character("TEST",0,30,10,1,"Ritter",5,4,4,4);
+		hero = new character("TEST",0,5,10,1,"Ritter",5,4,4,4);
 	}
 }

@@ -22,7 +22,7 @@ public class phase {
 		for (int i=0; i<rounds; i++){ //Anzahl der Events, welche in Phase 1 getriggert werden sollen (MAX: 30)
 
 			Random x = new Random();
-			eventID = x.nextInt(main.eventsPhase.size());
+			eventID = x.nextInt(main.eventsPhase.size()-1);
 			
 			//eventID = 19; //DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
 			
@@ -136,8 +136,23 @@ public class phase {
 				  System.out.println("");
 				  
 				  if(flowClass.hero.hp <= 0) {
-					  System.out.print("leider bist du tot! -");
-					  attackTrue = 1;
+					  System.out.println("- Leider bist du tot! -");
+					  Thread.sleep(1500);
+					  System.out.println("");
+					  System.out.println("- Vielen Dank fürs Spielen, probier es doch gleich nochmals :) -");
+					  Thread.sleep(3500);
+					  System.out.print("");
+					  
+					  System.out.println("    __ ,                                 __                      ");
+					  System.out.println("  ,-| ~                                ,-||-,                    ");
+					  System.out.println(" ('||/__,   _                         ('|||  )  ;                ");
+					  System.out.println("(( |||  |  < \\, \\\\/\\\\/\\\\  _-_        (( |||--)) \\\\/\\  _-_  ,._-_ ");
+					  System.out.println("(( |||==|  /-|| || || || || \\\\       (( |||--)) || | || \\\\  ||   ");
+					  System.out.println(" ( / |  , (( || || || || ||/          ( / |  )  || | ||/    ||   ");
+					  System.out.println("  -____/   \\/\\\\ \\\\ \\\\ \\\\ \\\\,/          -____-   \\\\/  \\\\,/   \\\\,  ");
+					  
+					  Thread.sleep(5000);
+					  System.exit(0);
 				  }
 			  }
 			  else {

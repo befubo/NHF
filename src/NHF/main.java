@@ -14,46 +14,40 @@ public class main {
 	public static enemy enemy;
 	public static decision decision;
 	public static story story;
+	public static save save;
 	public static ArrayList<String> eventsPhase;
 	public static ArrayList<String> typesPhase;
 	
 	public static void main(String[] args) throws InterruptedException {
-		
-		int debugger = 0; // DEBUG-MODE, 0=OFF, 1=ON
-		
+		main m = new main();
+		phase phase = new phase();
 		flowClass game = new flowClass();
 		
-		if(debugger == 1) {
-			game.debugHero();
-		} else {
-			game.startGame(); //Intro mit Titelbild und Begrüssung
-			//Check for Savegame
-			game.createChar(); //Charaktererstellung
-			game.saveGame(1); //Spiel speichern
-			Thread.sleep(4000);
-			game.adventureIntro(); //Statischer Introtext für das Abenteuer
-		}
+		game.startGame(); //Intro mit Titelbild und Begrüssung
+		game.createChar(); //Charaktererstellung
+		//m.gameSave(flowClass.hero.name,1); //Spiel speichern
+		//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
+		Thread.sleep(4000);
+		game.adventureIntro(); //Statischer Introtext für das Abenteuer
 		
-		phase phase = new phase();
-		phase.executePhase(1,3); //Erste Spielphase starten, Argumente: (int Phase, int Rundenzahl)
+		phase.executePhase(1,5); //Erste Spielphase starten, Argumente: (int Phase, int Rundenzahl)
 		
 		game.changePhase1to2(); //Statischer Text zum Wechsel der Umgebung
-		game.saveGame(2); //Spiel speichern
+		//m.gameSave(flowClass.hero.name,2); //Spiel speichern
+		//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		
-		phase.executePhase(2,3); //Zweite Spielphase starten, Argumente: (int Phase, int Rundenzahl)
+		phase.executePhase(2,5); //Zweite Spielphase starten, Argumente: (int Phase, int Rundenzahl)
 		
 		game.changePhase2to3(); //Statischer Text zum Wechsel der Umgebung
-		game.saveGame(3); //Spiel speichern
+		//m.gameSave(flowClass.hero.name,3); //Spiel speichern
+		//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		
-		phase.executePhase(3,3); //Dritte Spielphase starten, Argumente: (int Phase, int Rundenzahl)
+		
+		phase.executePhase(3,5); //Dritte Spielphase starten, Argumente: (int Phase, int Rundenzahl)
 
-		//BOSSFIGHT
+		//BOSSFIGHT TBD
 		System.out.println("ENDE");
-		
-		
-		
-		
-		
+		m.deleteChar();
 	}
 	
 	public main() {
@@ -210,6 +204,114 @@ public class main {
 		int value = res.getInt(3);
 		
 		story = new story(skill,value);
+		
+		res.close();
+		stmt.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void newChar(String n, int x, int h, int a, int t, String pt, int s, int c, int i, int ch) {
+		try {
+		Statement stmt = con.createStatement();
+		String sql = "INSERT INTO nhf_character VALUES (1, '"+n+"', '"+x+"', '"+h+"', '"+a+"', '"+t+"', '"+s+"', '"+c+"', '"+i+"', '"+ch+"', '"+pt+"')";
+		ResultSet res = stmt.executeQuery(sql);
+		
+		res.close();
+		stmt.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadChar() {
+		try {
+		Statement stmt = con.createStatement();
+		String sql = "SELECT * FROM nhf_character WHERE id = 1";
+		ResultSet res = stmt.executeQuery(sql);
+		res.next();
+		
+		String userName = res.getString(2);
+		int xp = res.getInt(3);
+		int playerHP = res.getInt(4);
+		int playerAP = res.getInt(5);
+		int userTypeInt = res.getInt(6);
+		int playerS = res.getInt(7);
+		int playerK = res.getInt(8);
+		int playerI = res.getInt(9);
+		int playerC = res.getInt(10);
+		String playerType = res.getString(11);
+		
+		hero = new character(userName,xp,playerHP,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
+		
+		res.close();
+		stmt.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateChar(String n, int x, int h, int a, int t, String pt, int s, int c, int i, int ch) {
+		try {
+		Statement stmt = con.createStatement();
+		String sql = "UPDATE nhf_character SET name = '"+n+"', xp = '"+x+"', hp = '"+h+"', ap = '"+a+"', type = '"+t+"', ptype = '"+pt+"', strenght = '"+s+"', condition = '"+c+"', intelligence = '"+i+"', charisma = '"+ch+"'  WHERE id = 1";
+		ResultSet res = stmt.executeQuery(sql);
+		
+		res.close();
+		stmt.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteChar() {
+		try {
+		Statement stmt = con.createStatement();
+		String sql = "DELETE FROM nhf_character WHERE id = 1";
+		ResultSet res = stmt.executeQuery(sql);
+		
+		res.close();
+		stmt.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void gameSave(String n, int p) {
+		System.out.println("");
+		System.out.println("[[[Spiel gespeichert]]]");
+		System.out.println("");
+		try {
+		Statement stmt = con.createStatement();
+		String sql = "UPDATE nhf_savegame SET name = '"+n+"', phase = '"+p+"' WHERE id = 1";
+		ResultSet res = stmt.executeQuery(sql);
+		
+		res.close();
+		stmt.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void checkSave() {
+		
+		try {
+		Statement stmt = con.createStatement();
+		String sql = "SELECT * FROM nhf_savegame WHERE id = 1";
+		ResultSet res = stmt.executeQuery(sql);
+		res.next();
+		
+		String name = res.getString(2);
+		int phase = res.getInt(3);
+		
+		save = new save(name,phase);
 		
 		res.close();
 		stmt.close();
