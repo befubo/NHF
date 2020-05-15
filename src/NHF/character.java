@@ -25,17 +25,4 @@ public class character {
 		intelligence=i;
 		charisma=ch;
 	}
-	
-	void checkHealth() {
-		if(hp <= 0) {
-			//Game Over aufrufen
-			System.out.println("Du bist tot!");
-		}
-	}
-	
-	void heal() {
-		//Heal the hero
-	}
-	
-
 }

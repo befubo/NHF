@@ -11,6 +11,4 @@ public class enemy {
 		ap = a;
 		xp = x;
 	}
-	
-	
 }
