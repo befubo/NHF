@@ -29,7 +29,7 @@ public class main {
 		//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		Thread.sleep(4000);
 		game.adventureIntro(); //Statischer Introtext für das Abenteuer
-		
+		Thread.sleep(4000);
 		phase.executePhase(1,5); //Erste Spielphase starten, Argumente: (int Phase, int Rundenzahl)
 		
 		game.changePhase1to2(); //Statischer Text zum Wechsel der Umgebung
@@ -46,8 +46,15 @@ public class main {
 		phase.executePhase(3,5); //Dritte Spielphase starten, Argumente: (int Phase, int Rundenzahl)
 
 		//BOSSFIGHT TBD
-		System.out.println("ENDE");
-		m.deleteChar();
+		
+		  System.out.println(" ___                                               ");
+		  System.out.println("-   ---___- ,,                  ,- _~,        |\\   ");
+		  System.out.println("   (' ||    ||                 (' /| /         \\\\  ");
+		  System.out.println("  ((  ||    ||/\\\\  _-_        ((  ||/= \\\\/\\\\  / \\\\");
+		  System.out.println(" ((   ||    || || || \\\\       ((  ||   || || || || ");
+		  System.out.println("  (( //     || || ||/          ( / |   || || || || ");
+		  System.out.println("    -____-  \\\\ |/ \\\\,/          -____- \\\\ \\\\  \\\\/  ");
+		  System.out.println("              _/                                   ");
 	}
 	
 	public main() {

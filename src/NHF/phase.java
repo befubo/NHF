@@ -24,7 +24,7 @@ public class phase {
 			Random x = new Random();
 			eventID = x.nextInt(main.eventsPhase.size()-1);
 			
-			//eventID = 19; //DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
+			eventID = 10; //DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
 			
 			eventContent = main.eventsPhase.get(eventID);
 			eventType = main.typesPhase.get(eventID);
@@ -164,11 +164,8 @@ public class phase {
 	
 	public void executeDecision(int phase) throws InterruptedException {
 		System.out.printf(eventContent);
-		System.out.println("");
-		System.out.println("+ Entscheidung treffen +");
-		
+		Thread.sleep(5000);
 		Scanner userInputDecision = new Scanner(System.in);
-		System.out.println("+ Gebe dafür [J] für JA ein oder [N] für NEIN +");
 		while (!userInputDecision.hasNext("[JNjn]")) {
 		    System.out.println("+ Bitte gebe einen gültigen Buchstaben an +");
 		    userInputDecision.next();
@@ -239,10 +236,6 @@ public class phase {
 			break;
 		}
 		
-		System.out.println("Benötigter Skill: "+main.decision.skill);
-		System.out.println("Benötigter Wert: "+main.decision.value);
-		System.out.println("Spieler Wert: "+playerValue);
-		
 		if(enoughSkill == 1) {
 			System.out.println(main.decision.success);
 		} else {
@@ -257,8 +250,6 @@ public class phase {
 	
 	public void executeStory(int phase) throws InterruptedException {
 	  System.out.printf(eventContent);
-	  System.out.println("");
-	  System.out.println("- Auswirkungen der Entscheidung: -");
 	  System.out.println("");
 	  
 	  main m = new main();  

@@ -50,7 +50,7 @@ public class flowClass {
 		}
 	}
 		
-	void createChar() throws InterruptedException {	
+	void createChar() throws InterruptedException {
 			System.out.println("+ Wie ist dein Name? +");
 			Scanner userInputChar = new Scanner(System.in);
 			String userName = userInputChar.nextLine();
@@ -118,7 +118,7 @@ public class flowClass {
 			System.out.println("[I] Intelligenz: "+playerI);
 			System.out.println("[C] Charisma: "+playerC);
 			Thread.sleep(2000);
-			hero = new character(userName,0,1,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
+			hero = new character(userName,0,30,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
 			
 	}
 	

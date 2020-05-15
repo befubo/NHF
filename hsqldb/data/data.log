@@ -1,0 +1,19 @@
+/*C2*/SET SCHEMA PUBLIC
+DELETE FROM NHF_PHASE_1 WHERE ID=13
+INSERT INTO NHF_PHASE_1 VALUES(13,1,'- Ein junger Knecht kommt auf dich zu und fordert dich zu einem Wettrennen auf -\u000a- Er m\u00f6chte vor seinen Kameraden angeben und einen richtigen Helden im Wettlauf schlagen -\u000a- Er sieht sportlich aus, ihn zu schlagen wird nicht einfach [Kondition] -\u000a+ Dr\u00fccke [J] um anzunehmen, [N] zum weitergehen +')
+COMMIT
+DELETE FROM NHF_DECISION_1 WHERE ID=13
+INSERT INTO NHF_DECISION_1 VALUES(13,'c',7,'- Auch wenn der Knecht sich gut schl\u00e4gt, gewinnst du das Wettrennen -\u000a- Geknickt zieht er von dannen, du bis aber froh \u00fcber die kleine Trainingseinlage -\u000a- Dein Charakter erh\u00e4lt einen [K] Kondition Punkt -','Nicht Geschafft!')
+COMMIT
+DELETE FROM NHF_DECISION_1 WHERE ID=13
+INSERT INTO NHF_DECISION_1 VALUES(13,'c',7,'- Auch wenn der Knecht sich gut schl\u00e4gt, gewinnst du das Wettrennen -\u000a- Geknickt zieht er von dannen, du bis aber froh \u00fcber die kleine Trainingseinlage -\u000a- Dein Charakter erh\u00e4lt einen [K] Kondition Punkt -','- Ihr sprintet beide die Strasse herunter, als du \u00fcber einen Stein stolperst. -\u000a- Nicht nur machst du dich l\u00e4cherlich und verlierst das Rennen, sondern verletzt dich beim aufschlagen. -\u000a- Dein Charakter verliert einen [HP] Lebenspunkt -')
+COMMIT
+DELETE FROM NHF_DECISION_1 WHERE ID=18
+INSERT INTO NHF_DECISION_1 VALUES(18,'ch',7,'Geschafft!','- Beim Versuch die h\u00fcbsche Dame zu verf\u00fchren, gehst du sehr tollpatschig ans Werk. -\u000a- Die junge Frau ist ausser sich und gibt dir eine Ohrfeige -\u000a- Dein Charakter verliert einen [HP] Lebenspunkt -')
+COMMIT
+DELETE FROM NHF_DECISION_1 WHERE ID=18
+INSERT INTO NHF_DECISION_1 VALUES(18,'ch',7,'- Nach einigen Stunden tritts du aus dem Stall und klopst dir das Stroh von der Kleidung -\u000a- Noch immer hast du den Geruch der goldenen Haare in der Nase -\u000a- Dein Charakter erh\u00e4lt einen [C] Charisma Punkt -','- Beim Versuch die h\u00fcbsche Dame zu verf\u00fchren, gehst du sehr tollpatschig ans Werk. -\u000a- Die junge Frau ist ausser sich und gibt dir eine Ohrfeige -\u000a- Dein Charakter verliert einen [HP] Lebenspunkt -')
+COMMIT
+DELETE FROM NHF_PHASE_1 WHERE ID=18
+INSERT INTO NHF_PHASE_1 VALUES(18,1,'- Vom Feldesrand kommt eine sch\u00f6ne Maid auf dich zu. -\u000a- Sie fragt dich nach deinen bisherigen Abenteuern und m\u00f6chte wissen, wie es in der weiten Welt so ist. -\u000a- Du hast den Eindruck, sie m\u00f6chte mehr als nur reden [Charisma] -\u000a+ Dr\u00fccke [J] um dich zu unterhalten, [N] zum weitergehen -')
+COMMIT
