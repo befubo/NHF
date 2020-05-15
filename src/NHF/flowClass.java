@@ -9,20 +9,20 @@ public class flowClass {
 		System.out.println("                    \\\\    _   ||       ||      _                _||_    _   || ||             ");
 		System.out.println("\\\\/\\\\  /'\\\\ ,._-_  / \\\\  < \\, ||       ||/\\\\  < \\,  _-_,       ' ||    < \\, || ||  _-_  \\\\/\\\\ ");
 		System.out.println("|| || || ||  ||   || ||  /-|| ||       || ||  /-|| ||_.          ||    /-|| || || || \\\\ || || ");
-		System.out.println("|| || || ||  ||   || || (( || ||       || || (( ||  ~ ||         |,   (( || || || ||/   || || ");
+		System.out.println("|| || || ||  ||   || || (( || ||       || || (( ||  - ||         |,   (( || || || ||/   || || ");
 		System.out.println("\\\\ \\\\ \\\\,/   \\\\,   \\\\/   \\/\\\\ \\\\       \\\\ |/  \\/\\\\ ,-_-        _-/     \\/\\\\ \\\\ \\\\ \\\\,/  \\\\ \\\\ ");
 		System.out.println("                                         _/                                                   ");
 		System.out.println("");
 		
 		Thread.sleep(2000);
-		System.out.println("~ Willkommen beim textbasierten Rollenspiel \"Nordal has fallen\" von Benjamin Bossart ~");
+		System.out.println("- Willkommen beim textbasierten Rollenspiel \"Nordal has fallen\" von Benjamin Bossart -");
 		Thread.sleep(2000);
 		System.out.println("+ Wie ist dein Name? +");
 		Scanner userInput = new Scanner(System.in);
 		String userName = userInput.nextLine();
-		System.out.println("~ Ein Hoch auf "+userName+", gesegnet sollst du sein! ~");
+		System.out.println("- Ein Hoch auf "+userName+", gesegnet sollst du sein! -");
 		Thread.sleep(2000);
-		System.out.println("~ Möchtest du gerne eine kurze Einleitung in die Spielsteuerung erhalten? ~");
+		System.out.println("- Möchtest du gerne eine kurze Einleitung in die Spielsteuerung erhalten? -");
 		Thread.sleep(1000);
 		System.out.println("+ Gebe dafür [J] für JA ein oder [N] für NEIN +");
 		String tutorial = userInput.nextLine();
@@ -31,19 +31,19 @@ public class flowClass {
 		
 		if ("J".equalsIgnoreCase(tutorial)) {chooseTut = 1;
 		
-		System.out.println("~ Dieses Rollenspiel funktioniert ausschliesslich über die Konsole ~");
+		System.out.println("- Dieses Rollenspiel funktioniert ausschliesslich über die Konsole -");
 		Thread.sleep(2000);
-		System.out.println("~ Alle Sätze haben ein Zeichen am Anfang und am Ende. Diese bedeuten folgendes:");
+		System.out.println("- Alle Sätze haben ein Zeichen am Anfang und am Ende. Diese bedeuten folgendes:");
 		Thread.sleep(2000);
-		System.out.println("[~] Zeigt an, dass dies eine Information vom Spiel an dich ist. Es ist keine Aktion möglich");
+		System.out.println("[-] Zeigt an, dass dies eine Information vom Spiel an dich ist. Es ist keine Aktion möglich");
 		System.out.println("[+] bedeutet, dass als nächstes eine Eingabe von dir in der Konsole erwartet wird");
 		System.out.println("");
 		Thread.sleep(8000);
-		System.out.println("~ Das Spiel gibt dir in den meisten Fällen vor, was du eingeben kannst ~");
+		System.out.println("- Das Spiel gibt dir in den meisten Fällen vor, was du eingeben kannst -");
 		Thread.sleep(1000);
-		System.out.println("~ Diese Möglichkeiten werden in [eckigen Klammern] dargestellt ~");
+		System.out.println("- Diese Möglichkeiten werden in [eckigen Klammern] dargestellt -");
 		Thread.sleep(1000);
-		System.out.println("~ Es geht nun mit der Charaktererstellung weiter. Viel Spass! ~");
+		System.out.println("- Es geht nun mit der Charaktererstellung weiter. Viel Spass! -");
 		System.out.println("");
 		Thread.sleep(6000);
 	
@@ -55,7 +55,7 @@ public class flowClass {
 		//ABFRAGE, OB EIN SPEICHERSTAND VORHANDEN IST ODER NICHT
 		
 		if(true) {
-			System.out.println("~ Da du dich zum ersten Mal in ein Abenteuer stürzt, erstellen wir zuerst deinen Charakter ~");
+			System.out.println("- Da du dich zum ersten Mal in ein Abenteuer stürzt, erstellen wir zuerst deinen Charakter -");
 			Thread.sleep(4000);
 			System.out.println("+ Was für ein Abenteurer möchtest du sein? +");
 			Thread.sleep(1000);
@@ -72,7 +72,7 @@ public class flowClass {
 				else if ("M".equalsIgnoreCase(userType)) {validType = 1; userTypeName ="Magier"; userTypeInt = 3;}
 				else {System.out.println("+ Bitte gebe einen gültigen Buchstaben an +");};
 			}
-			System.out.println("~ Ah, ein neuer "+userTypeName+" in unseren Reihen! ~");
+			System.out.println("- Ah, ein neuer "+userTypeName+" in unseren Reihen! -");
 			Thread.sleep(2000);
 		    int playerS = 0;
 		    int playerK = 0;
@@ -86,8 +86,9 @@ public class flowClass {
 				playerS = 8;
 				playerK = 7;
 				playerI = 5;
-				playerC = 6;
+				playerC = 5;
 				playerType = "Ritter";
+				playerAP = 10;
 			    break;
 			  case 2:
 				playerS = 5;
@@ -95,6 +96,7 @@ public class flowClass {
 				playerI = 6;
 				playerC = 7;
 				playerType = "Dieb";
+				playerAP = 8;
 			    break;
 			  case 3:
 				playerS = 5;
@@ -102,18 +104,19 @@ public class flowClass {
 				playerI = 8;
 				playerC = 7;
 				playerType = "Magier";
+				playerAP = 8;
 				break;
 			}
 			playerAP = playerS*playerK;
 			
-			System.out.println("~ Folgende Attribute hast du erhalten: ~");
+			System.out.println("- Folgende Attribute hast du erhalten: -");
 			System.out.println("[S] Stärke: "+playerS);
 			System.out.println("[K] Kondition: "+playerK);
 			System.out.println("[I] Intelligenz: "+playerI);
 			System.out.println("[C] Charisma: "+playerC);
 			Thread.sleep(6000);
-			int addPoints = 3;
-			System.out.println("~ Du kannst jetzt noch "+addPoints+" Punkte selber verteilen ~");
+			int addPoints = 2;
+			System.out.println("- Du kannst jetzt noch "+addPoints+" Punkte selber verteilen -");
 			System.out.println("+ Nacheinander kannst du nachfolgend angeben, wie viele Punkt zu welchem Attribut hinzugefügt werden sollen +");
 			
 			System.out.println("[S] Stärke:");
@@ -145,14 +148,15 @@ public class flowClass {
 				else {System.out.println("+ Nicht genügend Punkte übrig +");};
 			}
 			
-			hero = new character(userName,0,20,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
+			hero = new character(userName,0,30,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
 			
 		}
 		userInput.close();
 	}
 	
 	void saveGame() throws InterruptedException {
-		System.out.println("~ Spiel gespeichert ~");
+		hero = new character("TEST",0,30,10,1,"Ritter",8,7,6,6); //DEBUG USER
+		System.out.println("- Spiel gespeichert -");
 		System.out.println("--------------------------------------------------");
 		// Spielstand in DB speichern
 	}
