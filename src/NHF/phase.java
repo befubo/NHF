@@ -27,17 +27,17 @@ public class phase {
 				eventIndex = x.nextInt(main.idsPhase.size()-1);
 			}
 			
+			int eID = main.idsPhase.get(eventIndex);
 			eventContent = main.eventsPhase.get(eventIndex);
 			eventType = main.typesPhase.get(eventIndex);
 			
-					/* Debug Block
-					int eID = main.idsPhase.get(eventIndex);			
-					System.out.println(Arrays.toString(main.idsPhase.toArray()));
-					System.out.println("i: "+i+"/"+rounds+" Runden");
-					System.out.println("Event Index: "+eventIndex);
-					System.out.println("EventID: "+eID);
-					System.out.println("---------");
-					*/
+					//Debug Block	
+					//System.out.println(Arrays.toString(main.idsPhase.toArray()));
+					//System.out.println("i: "+i+"/"+rounds+" Runden");
+					//System.out.println("Event Index: "+eventIndex);
+					//System.out.println("EventID: "+eID);
+					//System.out.println("---------");
+					
 			
 			switch(eventType) {
 			  case "0":
@@ -45,11 +45,11 @@ public class phase {
 				  nextEvent();
 			    break;
 			  case "1":
-				  executeDecision(phase,eventIndex);
+				  executeDecision(phase,eID);
 				  nextEvent();
 			    break;
 			  case "2":
-				  executeStory(phase,eventIndex);
+				  executeStory(phase,eID);
 				  nextEvent();
 				break;
 			}

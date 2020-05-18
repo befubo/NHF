@@ -66,8 +66,8 @@ public class flowClass {
 			System.out.println("+ Was für ein Abenteurer möchtest du sein? +");
 			Thread.sleep(1000);
 			System.out.println("[R] Ritter (Sehr stark, nicht besonders schlau)");
-			System.out.println("[D] Dieb (Nicht besonders stark, durchschnittlich schlau, charismatisch");
-			System.out.println("[M] Magier (Sehr klug, körperlich eher schwach");
+			System.out.println("[D] Dieb (Nicht besonders stark, durchschnittlich schlau, charismatisch)");
+			System.out.println("[M] Magier (Sehr klug, körperlich eher schwach)");
 
 			while (!userInputChar.hasNext("[RrDdMm]")) {
 			    System.out.println("+ Bitte gebe einen gültigen Buchstaben an +");
