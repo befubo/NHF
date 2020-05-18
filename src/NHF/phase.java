@@ -1,7 +1,5 @@
 package NHF;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -29,21 +27,17 @@ public class phase {
 				eventIndex = x.nextInt(main.idsPhase.size()-1);
 			}
 			
-			
-			//eventIndex = 0; //DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
-			
 			eventContent = main.eventsPhase.get(eventIndex);
 			eventType = main.typesPhase.get(eventIndex);
-			int eID = main.idsPhase.get(eventIndex);
 			
-			/*
-			System.out.println(Arrays.toString(main.idsPhase.toArray()));
-			System.out.println("i: "+i+"/"+rounds+" Runden");
-			System.out.println("Event Index: "+eventIndex);
-			System.out.println("EventID: "+eID);
-			System.out.println("---------");
-			*/
-			
+					/* Debug Block
+					int eID = main.idsPhase.get(eventIndex);			
+					System.out.println(Arrays.toString(main.idsPhase.toArray()));
+					System.out.println("i: "+i+"/"+rounds+" Runden");
+					System.out.println("Event Index: "+eventIndex);
+					System.out.println("EventID: "+eID);
+					System.out.println("---------");
+					*/
 			
 			switch(eventType) {
 			  case "0":
@@ -60,7 +54,6 @@ public class phase {
 				break;
 			}
 			
-
 			main.idsPhase.remove(eventIndex);
 			main.eventsPhase.remove(eventIndex);
 			main.typesPhase.remove(eventIndex);
@@ -115,7 +108,6 @@ public class phase {
 			  int hpNPC = main.enemy.hp;
 			  
 			  int apPlayer = flowClass.hero.ap;
-			  int hpPlayer = flowClass.hero.hp;
 			  	int sPlayer = flowClass.hero.strenght;
 			  	int cPlayer = flowClass.hero.condition;
 			  int blockPlayer = sPlayer + cPlayer;
@@ -163,7 +155,7 @@ public class phase {
 			  }
 			  System.out.println("--------------------------------------------------");
 		  }
-		}
+	}
 	
 	public void executeDecision(int phase, int event) throws InterruptedException {
 		System.out.printf(eventContent);
@@ -173,9 +165,8 @@ public class phase {
 		while (!userInputDecision.hasNext("[JNjn]")) {
 		    System.out.println("+ Bitte gebe einen gültigen Buchstaben an +");
 		    userInputDecision.next();
-		}
+			}
 		String decPlay = userInputDecision.next();
-		System.out.printf("%n %n");
 		int dec = 0;
 		if ("J".equalsIgnoreCase(decPlay)) {dec = 1;}
 		else if ("N".equalsIgnoreCase(decPlay)) {dec = 0;}
@@ -184,10 +175,8 @@ public class phase {
 		main m = new main();  
 	  	m.selectDecision(phase,event);
 	  	int enoughSkill = 0;
-	  	int playerValue = 0;
 		switch(main.decision.skill) {
 		  case "s":
-			  playerValue = flowClass.hero.strenght;
 			  if(main.decision.value > flowClass.hero.strenght) {
 				  Random randX = new Random();
 				  if(randX.nextInt(20) > main.decision.value) {
@@ -200,7 +189,6 @@ public class phase {
 			  }
 		    break;
 		  case "c":
-			  playerValue = flowClass.hero.condition;
 			  if(main.decision.value > flowClass.hero.condition) {
 				  Random randX = new Random();
 				  if(randX.nextInt(20) > main.decision.value) {
@@ -213,7 +201,6 @@ public class phase {
 			  }
 		    break;
 		  case "i":
-			  playerValue = flowClass.hero.intelligence;
 			  if(main.decision.value > flowClass.hero.intelligence) {
 				  Random randX = new Random();
 				  if(randX.nextInt(20) > main.decision.value) {
@@ -226,7 +213,6 @@ public class phase {
 			  }
 			break;
 		  case "ch":
-			  playerValue = flowClass.hero.charisma;
 			  if(main.decision.value > flowClass.hero.charisma) {
 				  Random randX = new Random();
 				  if(randX.nextInt(20) > main.decision.value) {
@@ -266,27 +252,18 @@ public class phase {
 		switch(main.story.skill) {
 		  case "s":
 			  flowClass.hero.strenght += main.story.value;
-			  System.out.println("Anpassung Stärke: "+main.story.value);
 			  break;
 		  case "c":
 			  flowClass.hero.condition += main.story.value;
-			  System.out.println("Anpassung Kondition: "+main.story.value);
 			  break;
 		  case "i":
 			  flowClass.hero.intelligence += main.story.value;
-			  System.out.println("Anpassung Intelligenz: "+main.story.value);
 			  break;
 		  case "ch":
 			  flowClass.hero.charisma += main.story.value;
-			  System.out.println("Anpassung Charisma: "+main.story.value);
 			  break;
 		  case "hp":
 			  flowClass.hero.hp += main.story.value;
-			  System.out.println("Anpassung HP: "+main.story.value);
-			  if(flowClass.hero.hp <= 0) {
-				  flowClass game = new flowClass();
-				  game.playerDead();
-			  }
 			  break;	  
 	  }
 	System.out.println("--------------------------------------------------");

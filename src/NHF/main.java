@@ -24,29 +24,51 @@ public class main {
 		
 		game.startGame(); //Intro mit Titelbild und Begrüssung
 		game.createChar(); //Charaktererstellung
+			//game.debugHero();
 		
-		//game.debugHero();
 				//m.gameSave(flowClass.hero.name,1); //Spiel speichern
 				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		Thread.sleep(4000);
 		game.adventureIntro(); //Statischer Introtext für das Abenteuer
 		Thread.sleep(4000);
-		
+
+	//PHASE 1	
 		phase.executePhase(1,5); //Erste Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 		
 		game.changePhase1to2(); //Statischer Text zum Wechsel der Umgebung
 				//m.gameSave(flowClass.hero.name,2); //Spiel speichern
 				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
-		
+	
+	//PHASE 2
 		phase.executePhase(2,5); //Zweite Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 		
 		game.changePhase2to3(); //Statischer Text zum Wechsel der Umgebung
 				//m.gameSave(flowClass.hero.name,3); //Spiel speichern
 				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		
+	//PHASE 3
 		phase.executePhase(3,5); //Dritte Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 
-		//BOSSFIGHT TBD
+	//BOSSFIGHT TBD
+		System.out.println("- Du erreichst eine grosse, eiserne Türe. Dahinter müssen sich die Räume des dunklen Magiers befinden. -");
+		Thread.sleep(4000);
+		System.out.println("- Ein letztes Mal atmest du tief ein, machst deine Waffe bereit und drückst die grosse Türe auf. -");
+		Thread.sleep(4000);
+		System.out.println("- Vor dir tut sich ein riesiger Raum auf. In den dunklen Fels ist eine Art Arena gemeisselt. -");
+		Thread.sleep(4000);
+		System.out.println("- Du lässt deinen Blick durch den Raum streifen und dann siehst du ihn. -");
+		Thread.sleep(4000);
+		System.out.println("- Mittig auf der Tribühne steht ein Magier in einem dunklen, langen Umhang. Er hebt seine Hände. -");
+		Thread.sleep(5000);
+		System.out.println("~ Ich habe dich erwartet "+flowClass.hero.name+". Dein Ruf eilt dir voraus. ~");
+		Thread.sleep(4000);
+		System.out.println("- Er stösst sich vom Podest ab und schwebt zu dir nach unten. Er landet wenige Meter vor dir und hebt seinen Stab. -");
+		Thread.sleep(6000);
+		System.out.println("- ..... Fortsetzung folgt ..... -");
+		Thread.sleep(6000);
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
 		
 		  System.out.println(" ___                                               ");
 		  System.out.println("-   ---___- ,,                  ,- _~,        |\\   ");
@@ -213,7 +235,7 @@ public class main {
 		
 		String skill = res.getString(2);
 		int value = res.getInt(3);
-		
+			//System.out.println("[DEBUG] Skill: "+skill+", Value: "+value);
 		story = new story(skill,value);
 		
 		res.close();
@@ -312,7 +334,6 @@ public class main {
 	}
 	
 	public void checkSave() {
-		
 		try {
 		Statement stmt = con.createStatement();
 		String sql = "SELECT * FROM nhf_savegame WHERE id = 1";
@@ -331,5 +352,4 @@ public class main {
 			e.printStackTrace();
 		}
 	}
-
 }

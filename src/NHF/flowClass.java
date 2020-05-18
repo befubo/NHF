@@ -40,14 +40,15 @@ public class flowClass {
 		System.out.println("");
 		Thread.sleep(8000);
 		System.out.println("- Das Spiel gibt dir in den meisten Fällen vor, was du eingeben kannst -");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		System.out.println("- Diese Möglichkeiten werden in [eckigen Klammern] dargestellt -");
 		System.out.println("");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		System.out.println("- Es kann vorkommen, dass du Entscheidungen treffen musst. Diese sind mit [J] oder [N] zu beantworten -");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		System.out.println("- Wenn du dich dazu entscheidest, eine Aktion auszuführen wird geprüft, ob der benötigte Skill");
 		System.out.println("hoch genug ist. Der geprüfte Skill wird im text in [eckigen Klammern] dargestellt. -");
+		System.out.println("");
 		Thread.sleep(6000);
 		}
 		else if ("N".equalsIgnoreCase(tutorial)) {
@@ -124,7 +125,6 @@ public class flowClass {
 			Thread.sleep(2000);
 			hero = new character(userName,0,30,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
 			System.out.println("");
-			
 	}
 	
 	void adventureIntro() throws InterruptedException {
@@ -201,16 +201,10 @@ public class flowClass {
 		  System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
 		  Thread.sleep(1500);
 		  System.out.println("");
-		  main m = new main();
 		  main.main(null);
 	}
-	
 		
 	void debugHero() throws InterruptedException {
-		hero = new character("TEST",0,5,10,1,"Ritter",5,4,4,4);
+		hero = new character("TEST",0,20,10,1,"Ritter",5,4,4,4);
 	}
-	
-	
-	
-	
 }
