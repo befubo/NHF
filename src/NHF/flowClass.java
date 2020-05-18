@@ -43,10 +43,14 @@ public class flowClass {
 		Thread.sleep(1000);
 		System.out.println("- Diese Möglichkeiten werden in [eckigen Klammern] dargestellt -");
 		System.out.println("");
+		Thread.sleep(1000);
+		System.out.println("- Es kann vorkommen, dass du Entscheidungen treffen musst. Diese sind mit [J] oder [N] zu beantworten -");
+		Thread.sleep(1000);
+		System.out.println("- Wenn du dich dazu entscheidest, eine Aktion auszuführen wird geprüft, ob der benötigte Skill");
+		System.out.println("hoch genug ist. Der geprüfte Skill wird im text in [eckigen Klammern] dargestellt. -");
 		Thread.sleep(6000);
 		}
 		else if ("N".equalsIgnoreCase(tutorial)) {
-			
 		}
 	}
 		
@@ -60,9 +64,9 @@ public class flowClass {
 			Thread.sleep(4000);
 			System.out.println("+ Was für ein Abenteurer möchtest du sein? +");
 			Thread.sleep(1000);
-			System.out.println("[R] Ritter");
-			System.out.println("[D] Dieb");
-			System.out.println("[M] Magier");
+			System.out.println("[R] Ritter (Sehr stark, nicht besonders schlau)");
+			System.out.println("[D] Dieb (Nicht besonders stark, durchschnittlich schlau, charismatisch");
+			System.out.println("[M] Magier (Sehr klug, körperlich eher schwach");
 
 			while (!userInputChar.hasNext("[RrDdMm]")) {
 			    System.out.println("+ Bitte gebe einen gültigen Buchstaben an +");
@@ -119,6 +123,7 @@ public class flowClass {
 			System.out.println("[C] Charisma: "+playerC);
 			Thread.sleep(2000);
 			hero = new character(userName,0,30,playerAP,userTypeInt,playerType,playerS,playerK,playerI,playerC);
+			System.out.println("");
 			
 	}
 	
@@ -144,7 +149,7 @@ public class flowClass {
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
 		Thread.sleep(4000);
 		System.out.println("- Nachdem du das nötigste an Ausrüstung und Verpflegung eingepackt hast, machst du dich auf den Weg. -");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		System.out.println("- Dein Weg führt dich auf die Strasse in Richtung Norden. -");
 	}
 	
@@ -162,12 +167,50 @@ public class flowClass {
 	}
 	
 	void changePhase2to3() throws InterruptedException {
-		System.out.println("- Vom Wald in die Höhle -");
+		System.out.println("- Du erblickst vor dir eine grosse Felsformation, links und rechts rauschen Wasserfälle herab. -");
 		Thread.sleep(3500);
+		System.out.println("- Du tritts näher und erkennst am Fusse der Formation einen Höleneingang. -");
+		Thread.sleep(3500);
+		System.out.println("- Bei genaueren Untersuchung des Eingangs erkennst du das Zeichen des dunklen Magiers auf dem Felsen. -");
+		Thread.sleep(3500);
+		System.out.println("- Das muss der Ort sein! -");
+		Thread.sleep(3500);
+		System.out.println("- Du atmest einmal tief ein und kletterst anschliessend entschlossen in die Höhle. -");
+		Thread.sleep(3500);
+	}
+	
+	void playerDead() throws InterruptedException {
+		  System.out.println("- Leider bist du tot! -");
+		  Thread.sleep(1500);
+		  System.out.println("");
+		  System.out.println("- Vielen Dank fürs Spielen, probier es doch gleich nochmals :) -");
+		  Thread.sleep(3500);
+		  System.out.print("");
+		  
+		  System.out.println("    __ ,                                 __                      ");
+		  System.out.println("  ,-| ~                                ,-||-,                    ");
+		  System.out.println(" ('||/__,   _                         ('|||  )  ;                ");
+		  System.out.println("(( |||  |  < \\, \\\\/\\\\/\\\\  _-_        (( |||--)) \\\\/\\  _-_  ,._-_ ");
+		  System.out.println("(( |||==|  /-|| || || || || \\\\       (( |||--)) || | || \\\\  ||   ");
+		  System.out.println(" ( / |  , (( || || || || ||/          ( / |  )  || | ||/    ||   ");
+		  System.out.println("  -____/   \\/\\\\ \\\\ \\\\ \\\\ \\\\,/          -____-   \\\\/  \\\\,/   \\\\,  ");
+		  
+		  Thread.sleep(5000);
+		  System.out.println("");
+		  System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+		  System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+		  Thread.sleep(1500);
+		  System.out.println("");
+		  main m = new main();
+		  main.main(null);
 	}
 	
 		
 	void debugHero() throws InterruptedException {
 		hero = new character("TEST",0,5,10,1,"Ritter",5,4,4,4);
 	}
+	
+	
+	
+	
 }

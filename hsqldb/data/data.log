@@ -1,19 +1,104 @@
 /*C2*/SET SCHEMA PUBLIC
-DELETE FROM NHF_PHASE_1 WHERE ID=13
-INSERT INTO NHF_PHASE_1 VALUES(13,1,'- Ein junger Knecht kommt auf dich zu und fordert dich zu einem Wettrennen auf -\u000a- Er m\u00f6chte vor seinen Kameraden angeben und einen richtigen Helden im Wettlauf schlagen -\u000a- Er sieht sportlich aus, ihn zu schlagen wird nicht einfach [Kondition] -\u000a+ Dr\u00fccke [J] um anzunehmen, [N] zum weitergehen +')
+DELETE FROM NHF_MONSTER_2 WHERE ID=1 AND NAME='Bandit' AND HP=5 AND AP=5 AND XP=10
+DELETE FROM NHF_MONSTER_2 WHERE ID=2 AND NAME='Greif' AND HP=8 AND AP=6 AND XP=15
+DELETE FROM NHF_MONSTER_2 WHERE ID=3 AND NAME='Dieb' AND HP=5 AND AP=5 AND XP=10
+DELETE FROM NHF_MONSTER_2 WHERE ID=4 AND NAME='Silberschatten' AND HP=10 AND AP=7 AND XP=20
+DELETE FROM NHF_MONSTER_2 WHERE ID=5 AND NAME='Sirab\u00e4r' AND HP=12 AND AP=8 AND XP=25
 COMMIT
-DELETE FROM NHF_DECISION_1 WHERE ID=13
-INSERT INTO NHF_DECISION_1 VALUES(13,'c',7,'- Auch wenn der Knecht sich gut schl\u00e4gt, gewinnst du das Wettrennen -\u000a- Geknickt zieht er von dannen, du bis aber froh \u00fcber die kleine Trainingseinlage -\u000a- Dein Charakter erh\u00e4lt einen [K] Kondition Punkt -','Nicht Geschafft!')
+DELETE FROM NHF_MONSTER_3 WHERE ID=1 AND NAME='Bandit' AND HP=5 AND AP=5 AND XP=10
+DELETE FROM NHF_MONSTER_3 WHERE ID=2 AND NAME='Greif' AND HP=8 AND AP=6 AND XP=15
+DELETE FROM NHF_MONSTER_3 WHERE ID=3 AND NAME='Dieb' AND HP=5 AND AP=5 AND XP=10
+DELETE FROM NHF_MONSTER_3 WHERE ID=4 AND NAME='Silberschatten' AND HP=10 AND AP=7 AND XP=20
+DELETE FROM NHF_MONSTER_3 WHERE ID=5 AND NAME='Sirab\u00e4r' AND HP=12 AND AP=8 AND XP=25
 COMMIT
-DELETE FROM NHF_DECISION_1 WHERE ID=13
-INSERT INTO NHF_DECISION_1 VALUES(13,'c',7,'- Auch wenn der Knecht sich gut schl\u00e4gt, gewinnst du das Wettrennen -\u000a- Geknickt zieht er von dannen, du bis aber froh \u00fcber die kleine Trainingseinlage -\u000a- Dein Charakter erh\u00e4lt einen [K] Kondition Punkt -','- Ihr sprintet beide die Strasse herunter, als du \u00fcber einen Stein stolperst. -\u000a- Nicht nur machst du dich l\u00e4cherlich und verlierst das Rennen, sondern verletzt dich beim aufschlagen. -\u000a- Dein Charakter verliert einen [HP] Lebenspunkt -')
+INSERT INTO NHF_MONSTER_2 VALUES(1,'Wolf',11,6,30)
 COMMIT
-DELETE FROM NHF_DECISION_1 WHERE ID=18
-INSERT INTO NHF_DECISION_1 VALUES(18,'ch',7,'Geschafft!','- Beim Versuch die h\u00fcbsche Dame zu verf\u00fchren, gehst du sehr tollpatschig ans Werk. -\u000a- Die junge Frau ist ausser sich und gibt dir eine Ohrfeige -\u000a- Dein Charakter verliert einen [HP] Lebenspunkt -')
+INSERT INTO NHF_MONSTER_2 VALUES(2,'Dunkelelf',11,6,30)
 COMMIT
-DELETE FROM NHF_DECISION_1 WHERE ID=18
-INSERT INTO NHF_DECISION_1 VALUES(18,'ch',7,'- Nach einigen Stunden tritts du aus dem Stall und klopst dir das Stroh von der Kleidung -\u000a- Noch immer hast du den Geruch der goldenen Haare in der Nase -\u000a- Dein Charakter erh\u00e4lt einen [C] Charisma Punkt -','- Beim Versuch die h\u00fcbsche Dame zu verf\u00fchren, gehst du sehr tollpatschig ans Werk. -\u000a- Die junge Frau ist ausser sich und gibt dir eine Ohrfeige -\u000a- Dein Charakter verliert einen [HP] Lebenspunkt -')
+INSERT INTO NHF_MONSTER_2 VALUES(3,'Waldgespenst',11,6,30)
 COMMIT
-DELETE FROM NHF_PHASE_1 WHERE ID=18
-INSERT INTO NHF_PHASE_1 VALUES(18,1,'- Vom Feldesrand kommt eine sch\u00f6ne Maid auf dich zu. -\u000a- Sie fragt dich nach deinen bisherigen Abenteuern und m\u00f6chte wissen, wie es in der weiten Welt so ist. -\u000a- Du hast den Eindruck, sie m\u00f6chte mehr als nur reden [Charisma] -\u000a+ Dr\u00fccke [J] um dich zu unterhalten, [N] zum weitergehen -')
+INSERT INTO NHF_MONSTER_2 VALUES(4,'Astronach',12,7,35)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(5,'Dunkel-Ork',12,7,35)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(6,'Werwolf',11,7,35)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(7,'B\u00e4umling',13,8,40)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(8,'Waldl\u00e4ufer',13,8,40)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(9,'B\u00e4r',13,8,40)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(10,'Waldtiger',14,9,45)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(11,'Rankling',14,9,45)
+COMMIT
+INSERT INTO NHF_MONSTER_2 VALUES(12,'Waldtroll',14,9,45)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(1,'H\u00f6hlenghul',15,10,50)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(2,'H\u00f6hlengoblin',15,10,50)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(3,'Orkw\u00e4chter',15,10,50)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(4,'Hexer',16,11,55)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(5,'H\u00f6hlenb\u00e4r',16,11,55)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(6,'Steinastronach',16,11,55)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(7,'Felsgespenst',17,12,60)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(8,'Vampir',17,12,60)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(9,'H\u00f6hlenwolf',17,12,60)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(10,'Nekromant',18,13,65)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(11,'Skelett',18,13,65)
+COMMIT
+INSERT INTO NHF_MONSTER_3 VALUES(12,'H\u00f6hlentroll',18,13,65)
+COMMIT
+DELETE FROM NHF_MONSTER_1 WHERE ID=1
+DELETE FROM NHF_MONSTER_1 WHERE ID=2
+DELETE FROM NHF_MONSTER_1 WHERE ID=3
+DELETE FROM NHF_MONSTER_1 WHERE ID=4
+DELETE FROM NHF_MONSTER_1 WHERE ID=5
+DELETE FROM NHF_MONSTER_1 WHERE ID=6
+DELETE FROM NHF_MONSTER_1 WHERE ID=7
+DELETE FROM NHF_MONSTER_1 WHERE ID=8
+DELETE FROM NHF_MONSTER_1 WHERE ID=9
+DELETE FROM NHF_MONSTER_1 WHERE ID=10
+DELETE FROM NHF_MONSTER_1 WHERE ID=11
+DELETE FROM NHF_MONSTER_1 WHERE ID=12
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(1,'Bandit',7,4,10)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(2,'Greif',7,4,10)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(3,'Dieb',7,4,10)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(4,'Silberschatten',8,4,15)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(5,'Wildhund',8,4,15)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(6,'Ghul',8,4,15)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(7,'Goblin',9,5,20)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(8,'Hexer',9,5,20)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(9,'Kampfkobold',9,5,20)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(10,'Oger',10,5,25)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(11,'Ork',10,5,25)
+COMMIT
+INSERT INTO NHF_MONSTER_1 VALUES(12,'Wiederg\u00e4nger',10,5,25)
+COMMIT
+DELETE FROM NHF_PHASE_1 WHERE ID=3
+INSERT INTO NHF_PHASE_1 VALUES(3,0,'- Du kommst an eine Br\u00fccke, welche scheinbar von Soldaten bewacht wird. -\u000a- Das Ganze kommt dir komisch vor, denn normalerweise lassen sich hier keine Soldaten blicken. -\u000a- Als du dich n\u00e4herst siehst du, dass die Soldaten tot sind und ihre K\u00f6rper aufgestellt wurden. -\u000a- Du ziehst deine Waffe, aus dem Strassengraben kommt etwas auf dich zu. -')
+COMMIT
+DELETE FROM NHF_PHASE_1 WHERE ID=4
+INSERT INTO NHF_PHASE_1 VALUES(4,0,'- Du \u00fcbernachtest in einer Taverne und ruhst dich aus f\u00fcr deinen weiteren Weg. -\u000a- In der Nacht h\u00f6rst du Schreie aus dem Schenkraum und lautes Krachen. -\u000a- Du schnappst dir deine Ausr\u00fcstung und st\u00fcrmst nach unten. Der ganze Schankraum versinkt im Chaos. -\u000a- Der Wirt liegt tot hinter dem Tresen. Du siehst, wie eine Gestalt sich \u00fcber einen schreienden Gast neigt. -\u000a- Als du auf die Gestalt zugehst, dreht sich diese zu dir um. -')
 COMMIT

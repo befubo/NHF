@@ -1,6 +1,7 @@
 package NHF;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class phase {
 	public static decision decision;
 	public static String eventContent;
 	public static String eventType;
-	public static int eventID;
+	public static ArrayList<String> idsPhase;
 	public static ArrayList<String> eventsPhase;
 	public static ArrayList<String> typesPhase;
 	
@@ -19,15 +20,29 @@ public class phase {
 		m.selectPhase(phase);
 		
 		
-		for (int i=0; i<rounds; i++){ //Anzahl der Events, welche in Phase 1 getriggert werden sollen (MAX: 30)
-
-			Random x = new Random();
-			eventID = x.nextInt(main.eventsPhase.size()-1);
+		for (int i=0; i<rounds; i++){
+			int eventIndex = 0;
 			
-			eventID = 10; //DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
+			if(main.idsPhase.size() == 1)
+			{ eventIndex = 0;} else {
+				Random x = new Random();
+				eventIndex = x.nextInt(main.idsPhase.size()-1);
+			}
 			
-			eventContent = main.eventsPhase.get(eventID);
-			eventType = main.typesPhase.get(eventID);
+			
+			//eventIndex = 0; //DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
+			
+			eventContent = main.eventsPhase.get(eventIndex);
+			eventType = main.typesPhase.get(eventIndex);
+			int eID = main.idsPhase.get(eventIndex);
+			
+			/*
+			System.out.println(Arrays.toString(main.idsPhase.toArray()));
+			System.out.println("i: "+i+"/"+rounds+" Runden");
+			System.out.println("Event Index: "+eventIndex);
+			System.out.println("EventID: "+eID);
+			System.out.println("---------");
+			*/
 			
 			
 			switch(eventType) {
@@ -36,16 +51,19 @@ public class phase {
 				  nextEvent();
 			    break;
 			  case "1":
-				  executeDecision(phase);
+				  executeDecision(phase,eventIndex);
 				  nextEvent();
 			    break;
 			  case "2":
-				  executeStory(phase);
+				  executeStory(phase,eventIndex);
 				  nextEvent();
 				break;
 			}
-			main.eventsPhase.remove(eventID);
-			main.typesPhase.remove(eventID);
+			
+
+			main.idsPhase.remove(eventIndex);
+			main.eventsPhase.remove(eventIndex);
+			main.typesPhase.remove(eventIndex);
 		}
 	}
 	
@@ -62,8 +80,8 @@ public class phase {
 		  System.out.println("+++ Kampf beginnt! +++");
 		  Thread.sleep(2000);
 		  System.out.println("");
-		  System.out.println("Deine Werte:");
-		  System.out.printf("[HP] "+flowClass.hero.hp+"%n[AP] "+flowClass.hero.ap+"%n[XP] "+flowClass.hero.xp+"%n");
+		  //System.out.println("Deine Werte:");
+		  //System.out.printf("[HP] "+flowClass.hero.hp+"%n[AP] "+flowClass.hero.ap+"%n[XP] "+flowClass.hero.xp+"%n");
 		  System.out.println("- Du würfelst und versuchst näher an eine zufällige Zahl zu kommen als der Gegner -");
 		  
 		  int attackTrue = 0;
@@ -136,23 +154,8 @@ public class phase {
 				  System.out.println("");
 				  
 				  if(flowClass.hero.hp <= 0) {
-					  System.out.println("- Leider bist du tot! -");
-					  Thread.sleep(1500);
-					  System.out.println("");
-					  System.out.println("- Vielen Dank fürs Spielen, probier es doch gleich nochmals :) -");
-					  Thread.sleep(3500);
-					  System.out.print("");
-					  
-					  System.out.println("    __ ,                                 __                      ");
-					  System.out.println("  ,-| ~                                ,-||-,                    ");
-					  System.out.println(" ('||/__,   _                         ('|||  )  ;                ");
-					  System.out.println("(( |||  |  < \\, \\\\/\\\\/\\\\  _-_        (( |||--)) \\\\/\\  _-_  ,._-_ ");
-					  System.out.println("(( |||==|  /-|| || || || || \\\\       (( |||--)) || | || \\\\  ||   ");
-					  System.out.println(" ( / |  , (( || || || || ||/          ( / |  )  || | ||/    ||   ");
-					  System.out.println("  -____/   \\/\\\\ \\\\ \\\\ \\\\ \\\\,/          -____-   \\\\/  \\\\,/   \\\\,  ");
-					  
-					  Thread.sleep(5000);
-					  System.exit(0);
+					  flowClass game = new flowClass();
+					  game.playerDead();
 				  }
 			  }
 			  else {
@@ -162,8 +165,9 @@ public class phase {
 		  }
 		}
 	
-	public void executeDecision(int phase) throws InterruptedException {
+	public void executeDecision(int phase, int event) throws InterruptedException {
 		System.out.printf(eventContent);
+		System.out.println("");
 		Thread.sleep(5000);
 		Scanner userInputDecision = new Scanner(System.in);
 		while (!userInputDecision.hasNext("[JNjn]")) {
@@ -171,14 +175,14 @@ public class phase {
 		    userInputDecision.next();
 		}
 		String decPlay = userInputDecision.next();
-		
+		System.out.printf("%n %n");
 		int dec = 0;
 		if ("J".equalsIgnoreCase(decPlay)) {dec = 1;}
 		else if ("N".equalsIgnoreCase(decPlay)) {dec = 0;}
 	  
 		if(dec == 1) {
 		main m = new main();  
-	  	m.selectDecision(phase,eventID);
+	  	m.selectDecision(phase,event);
 	  	int enoughSkill = 0;
 	  	int playerValue = 0;
 		switch(main.decision.skill) {
@@ -241,6 +245,10 @@ public class phase {
 		} else {
 			System.out.println(main.decision.fail);
 			flowClass.hero.hp--;
+			  if(flowClass.hero.hp <= 0) {
+				  flowClass game = new flowClass();
+				  game.playerDead();
+			  }
 		}
 	  } else {
 		  System.out.println("");
@@ -248,12 +256,12 @@ public class phase {
 	  System.out.println("--------------------------------------------------");
 	}
 	
-	public void executeStory(int phase) throws InterruptedException {
+	public void executeStory(int phase, int event) throws InterruptedException {
 	  System.out.printf(eventContent);
 	  System.out.println("");
 	  
 	  main m = new main();  
-	  m.selectStory(phase,eventID);
+	  m.selectStory(phase,event);
 	  
 		switch(main.story.skill) {
 		  case "s":
@@ -275,9 +283,14 @@ public class phase {
 		  case "hp":
 			  flowClass.hero.hp += main.story.value;
 			  System.out.println("Anpassung HP: "+main.story.value);
+			  if(flowClass.hero.hp <= 0) {
+				  flowClass game = new flowClass();
+				  game.playerDead();
+			  }
 			  break;	  
 	  }
 	System.out.println("--------------------------------------------------");
+	Thread.sleep(3000);
 	}
 	
 	public void nextEvent() throws InterruptedException {
@@ -298,6 +311,7 @@ public class phase {
 		System.out.println("[I] Intelligenz: "+flowClass.hero.intelligence);
 		System.out.println("[C] Charisma: "+flowClass.hero.charisma);
 		System.out.println("");
+		Thread.sleep(5000);
 		}
 		else if ("W".equalsIgnoreCase(nextEvent)) {{System.out.println("--------------------------------------------------");}
 	}

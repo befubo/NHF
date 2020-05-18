@@ -2,7 +2,6 @@ package NHF;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,35 +14,37 @@ public class main {
 	public static decision decision;
 	public static story story;
 	public static save save;
+	public static ArrayList<Integer> idsPhase;
 	public static ArrayList<String> eventsPhase;
 	public static ArrayList<String> typesPhase;
 	
 	public static void main(String[] args) throws InterruptedException {
-		main m = new main();
 		phase phase = new phase();
 		flowClass game = new flowClass();
 		
 		game.startGame(); //Intro mit Titelbild und Begrüssung
 		game.createChar(); //Charaktererstellung
-		//m.gameSave(flowClass.hero.name,1); //Spiel speichern
-		//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
+		
+		//game.debugHero();
+				//m.gameSave(flowClass.hero.name,1); //Spiel speichern
+				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		Thread.sleep(4000);
 		game.adventureIntro(); //Statischer Introtext für das Abenteuer
 		Thread.sleep(4000);
-		phase.executePhase(1,5); //Erste Spielphase starten, Argumente: (int Phase, int Rundenzahl)
+		
+		phase.executePhase(1,5); //Erste Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 		
 		game.changePhase1to2(); //Statischer Text zum Wechsel der Umgebung
-		//m.gameSave(flowClass.hero.name,2); //Spiel speichern
-		//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
+				//m.gameSave(flowClass.hero.name,2); //Spiel speichern
+				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		
-		phase.executePhase(2,5); //Zweite Spielphase starten, Argumente: (int Phase, int Rundenzahl)
+		phase.executePhase(2,5); //Zweite Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 		
 		game.changePhase2to3(); //Statischer Text zum Wechsel der Umgebung
-		//m.gameSave(flowClass.hero.name,3); //Spiel speichern
-		//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
+				//m.gameSave(flowClass.hero.name,3); //Spiel speichern
+				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
 		
-		
-		phase.executePhase(3,5); //Dritte Spielphase starten, Argumente: (int Phase, int Rundenzahl)
+		phase.executePhase(3,5); //Dritte Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 
 		//BOSSFIGHT TBD
 		
@@ -89,13 +90,16 @@ public class main {
 		String sql = "SELECT * FROM "+sqlPhase+"";
 		ResultSet res = stmt.executeQuery(sql);
 		
+		idsPhase = new ArrayList<Integer>();
 		eventsPhase = new ArrayList<String>();
 		typesPhase = new ArrayList<String>();
 		
 		while(res.next())
 		{
+			int id = res.getInt(1);
 			String type = res.getString(2);
 			String event = res.getString(3);
+			idsPhase.add(id);
 			typesPhase.add(type);
 			eventsPhase.add(event);
 		}
@@ -152,7 +156,7 @@ public class main {
 		}
 	}
 	
-	public void selectDecision(int phase, int eventID) {
+	public void selectDecision(int phase, int event) {
 		String sqlPhase = "";
 		switch(phase) {
 		  case 1:
@@ -168,7 +172,7 @@ public class main {
 		
 		try {
 		Statement stmt = con.createStatement();
-		String sql = "SELECT * FROM "+sqlPhase+" WHERE id = '"+eventID+"'";
+		String sql = "SELECT * FROM "+sqlPhase+" WHERE id = '"+event+"'";
 		ResultSet res = stmt.executeQuery(sql);
 		res.next();
 		
@@ -187,7 +191,7 @@ public class main {
 		}
 	}
 	
-	public void selectStory(int phase, int eventID) {
+	public void selectStory(int phase, int event) {
 		String sqlPhase = "";
 		switch(phase) {
 		  case 1:
@@ -203,7 +207,7 @@ public class main {
 		
 		try {
 		Statement stmt = con.createStatement();
-		String sql = "SELECT * FROM "+sqlPhase+" WHERE id = '"+eventID+"'";
+		String sql = "SELECT * FROM "+sqlPhase+" WHERE id = '"+event+"'";
 		ResultSet res = stmt.executeQuery(sql);
 		res.next();
 		
