@@ -2,6 +2,7 @@ package NHF;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,30 +23,34 @@ public class main {
 		phase phase = new phase();
 		flowClass game = new flowClass();
 		
-		game.startGame(); //Intro mit Titelbild und Begrüssung
-		game.createChar(); //Charaktererstellung
-			//game.debugHero();
+		//Debug Mode aktivieren?
+		Scanner userInputDebug = new Scanner(System.in);
+		System.out.println("+ Debugmode? [J] / [N] +");
+		while (!userInputDebug.hasNext("[JNjn]")) {
+		    System.out.println("+ Bitte gebe einen gültigen Buchstaben an +");
+		    userInputDebug.next();
+		}
+		String isDebug = userInputDebug.next();
 		
-				//m.gameSave(flowClass.hero.name,1); //Spiel speichern
-				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
-		Thread.sleep(4000);
-		game.adventureIntro(); //Statischer Introtext für das Abenteuer
-		Thread.sleep(4000);
+		if ("J".equalsIgnoreCase(isDebug)) {
+			game.debugHero();
+		}
+		else {
+			game.startGame(); //Intro mit Titelbild und Begrüssung
+			game.createChar(); //Charaktererstellung
+			Thread.sleep(4000);
+			game.adventureIntro(); //Statischer Introtext für das Abenteuer
+			Thread.sleep(4000);
+		}
 
 	//PHASE 1	
 		phase.executePhase(1,5); //Erste Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 		
 		game.changePhase1to2(); //Statischer Text zum Wechsel der Umgebung
-				//m.gameSave(flowClass.hero.name,2); //Spiel speichern
-				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
-	
 	//PHASE 2
 		phase.executePhase(2,5); //Zweite Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 		
 		game.changePhase2to3(); //Statischer Text zum Wechsel der Umgebung
-				//m.gameSave(flowClass.hero.name,3); //Spiel speichern
-				//m.updateChar(flowClass.hero.name,flowClass.hero.xp,flowClass.hero.hp,flowClass.hero.ap,flowClass.hero.type,flowClass.hero.ptype,flowClass.hero.strenght,flowClass.hero.condition,flowClass.hero.intelligence,flowClass.hero.charisma);
-		
 	//PHASE 3
 		phase.executePhase(3,5); //Dritte Spielphase starten, Argumente: (int Phase (1-3), int Rundenzahl (max 30))
 
